@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQUERY2</title>
+</head>
+<style>
+
+	.accord__title {
+  		cursor: pointer;
+	}
+
+	.accord__title:hover {
+  		text-decoration: underline;
+	}	
+
+	.hidden {
+  		display:none;
+	}
+
+</style>
+<body>
+    <div class="tab">
+
+		<h1 class="accord__title">ЗАГОЛОВОК</h1>
+
+		<ul class="accord_list hidden">
+
+			<li>Hello</li>
+			<li>World</li>
+
+		</ul>
+	</div>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script>
+        $tab = $('.tab');
+        //console.log($tab)
+        $tab.click(function (event) {
+            $target = $(event.target);
+            if(!$target.hasClass('accord__title')) return;
+
+        const $text = $target.next();
+            if (!$text) return;
+            //console.log($text);
+            $text.toggleClass('hidden')
+            
+        })
+    </script>
+    
+</body>
+</html>

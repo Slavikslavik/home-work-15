@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tab-content {
+  display: none;
+}
+
+.tab-content_current {
+  display: block;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  background-color: silver;
+  height: auto;
+  width: 100px;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
+  border-right: 1px solid dimgray;
+  cursor: pointer;
+}
+
+.tab_active {
+  background-color: lightgrey;
+}
+</style>
+<body>
+    <div class="tabs-container">
+        <div class="tabs">
+        <div class="tab tab_active" data-target="tab-1">London</div>
+        <div class="tab" data-target="tab-2">Liverpool</div>
+        <div class="tab" data-target="tab-3">Manchester</div>
+        </div>
+        <div class="tabs-container_content">
+            <div id="tab-1" class="tab-content_current">is RED</div>
+            <div id="tab-2" class="tab-content">Only one Team</div>
+            <div id="tab-3" class="tab-content">is blue</div>
+        </div>
+    </div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+     let hash = window.location.hash;
+if (hash) selectTab(hash.slice(1));
+
+$('.tabs').click( function(event) {
+  const $target = $(event.target).closest('.tab');
+
+  // Проверка
+  if (!$target || $target.hasClass('tab_active')) return;
+
+  selectTab($target.data('target'));
+
+})
+
+function selectTab(id) {
+  
+  $('.tab').removeClass('tab_active');
+  $('.tab[data-target="' + id + '"]').addClass('tab_active');
+
+  
+  $('.tab-content').removeClass('tab-content_current');
+  $('#' + id).addClass('tab-content_current');
+
+  
+  window.location.hash = id;
+}
+    </script>
+</body>
+</html>

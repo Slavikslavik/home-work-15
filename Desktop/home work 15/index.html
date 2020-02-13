@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQUERY</title>
+</head>
+<style>
+	body{
+	  background-color: lightblue;
+	}
+
+	.box{
+	  background-color: grey;
+	  height: 150px;
+	  width: 150px;
+	  display:inline-block;
+	  overflow: auto;
+	}
+	</style>
+<body>
+    <div class="box"></div> 
+    <script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+	<script>
+            
+            let $container = $('.box');
+            //console.log($container)
+            $container.mouseover(function handler(event) {
+              //alert('hello')
+              let $tooltip = $("<div></div>");
+              //console.log($tooltip);
+              $tooltip.text('don`t touch');
+              //console.log($tooltip);
+              $container.append($tooltip);
+            })
+            $container.mouseout(function (event) {
+              $("div :first-child").remove();
+              
+            })
+        </script>
+</body>
+</html>
